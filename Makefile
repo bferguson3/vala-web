@@ -1,7 +1,7 @@
 # run me sudo 
 
-UNAME:=$(uname)
-$(ifeq($(UNAME),"Darwin"))
+UNAME:=$(shell uname)
+ifeq ($(UNAME),Darwin)
 $(error THIS WILL NOT WORK ON MACOS! USE UBUNTU/WSL!!)
 endif
 
