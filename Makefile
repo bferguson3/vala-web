@@ -1,5 +1,10 @@
 # run me sudo 
 
+UNAME:=$(uname)
+$(ifeq($(UNAME),"Darwin"))
+$(error THIS WILL NOT WORK ON MACOS! USE UBUNTU/WSL!!)
+endif
+
 default:
 	mkdir -p build
 	valac -C --vapidir=./vapi --pkg emscripten *.vala 
@@ -13,7 +18,7 @@ default:
 		./*.c \
 		-o index.html 
 run:
-	emrun index.html --browser="/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+	emrun index.html
 
 clean:
 	rm -rf build 
